@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 import java.util.Properties;
 
 public class SimpleProducer extends Thread {
-    private final static Logger log = LoggerFactory.getLogger(SimpleProducer.class);
+    private static final Logger log = LoggerFactory.getLogger(SimpleProducer.class);
 
     public static void main(String[] args) {
-        SimpleProducer producer = new SimpleProducer();
-        producer.start();
+        SimpleProducer simpleProducer = new SimpleProducer();
+        simpleProducer.start();
     }
 
     public Properties configure() {
@@ -45,6 +45,7 @@ public class SimpleProducer extends Thread {
             sleep(3000);
         } catch (InterruptedException e) {
             log.error("sleep is excepted. ", e);
+            Thread.currentThread().interrupt();
         }
 
         producer.close();
