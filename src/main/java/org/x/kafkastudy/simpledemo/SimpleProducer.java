@@ -6,6 +6,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
+/**
+ * 1. 构造一个ProducerRecord对象。ProducerRecord的构造函数需要三个参数（topic名称, 消息的键, 消息的值)
+ *    键和值的类型必须与键序列化器和值序列化器相对应。
+ *
+ * 2. 调用send()方法来发送ProducerRecord对象。消息会先被放进缓冲区，然后通过单独的线程发送给服务器。
+ *    send()方法会返回一个包含RecordMetadata的Future对象。
+ *
+ */
 public class SimpleProducer extends Thread {
     private static final Logger log = LoggerFactory.getLogger(SimpleProducer.class);
 
